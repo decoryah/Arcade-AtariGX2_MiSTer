@@ -1,0 +1,14 @@
+`verilator_config
+// The signals sim/tb_jsa.cpp reads, made public one by one (--public-flat-rw over the whole design runs ~5x slower)
+public_flat_rd -module "gx2_jsa" -var "cen_cpu"
+public_flat_rd -module "gx2_jsa" -var "A24"
+public_flat_rd -module "gx2_jsa" -var "rw_n"
+public_flat_rd -module "gx2_jsa" -var "cpu_di"
+public_flat_rd -module "gx2_jsa" -var "cpu_do"
+public_flat_rd -module "gx2_jsa" -var "irq_n"
+public_flat_rd -module "T65" -var "pc"
+public_flat_rd -module "T65" -var "ir"
+public_flat_rd -module "T65" -var "mcycle"
+public_flat_rd -module "T65" -var "nmiact"
+public_flat_rd -module "T65" -var "nmicycle"
+public_flat_rd -module "T65" -var "irqcycle"

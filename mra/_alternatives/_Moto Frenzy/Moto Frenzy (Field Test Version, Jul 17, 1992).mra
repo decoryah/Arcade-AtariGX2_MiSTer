@@ -1,0 +1,81 @@
+<misterromdescription>
+    <name>Moto Frenzy (Field Test Version, Jul 17, 1992)</name>
+    <setname>motofrenft</setname>
+    <mameversion>0289</mameversion>
+    <year>1992</year>
+    <manufacturer>Atari Games</manufacturer>
+    <players>1</players>
+    <joystick>8-way</joystick>
+    <rotation>horizontal</rotation>
+    <rbf>atarigx2</rbf>
+    <platform>Atari GX2</platform>
+
+    <!--
+      Image for the Atari GX2 core (rtl/gx2_loader.sv, tools/gx2_rom.py):
+        0x000000 68EC020 program   0x080000 OKI 1   0x100000 OKI 2   0x180000 playfield thirds (3 x 512 KB)
+        0x300000 alphanumerics     0x320000 6502    0x330000 RLE objects
+      Index 1: the board (0 Space Lords: modesc 0x400 + XGA 136095-0072; 1 Moto Frenzy: modesc 0x200 + 136094-0072).
+      No DIP switches: the board keeps its settings in the EEPROM (index 4); change them in the game's test menu
+      (OSD: Service Mode).
+      Made by tools/make_mra.py from MAME 0.289 (src/mame/atari/atarigx2.cpp); parts are found by name and CRC.
+    -->
+
+    <rom index="1">
+        <part>01</part>
+    </rom>
+
+    <rom index="0" zip="motofrenft.zip|motofren.zip" md5="3e5c5f57a2021383652157b41a6fdcff" address="0x38000000">
+        <!-- 0x000000 maincpu: the 68EC020 program, ROM_LOAD32_BYTE -->
+        <interleave output="32">
+            <part name="136094-ft0.23e" crc="99158754" map="0001"/>
+            <part name="136094-ft1.23j" crc="33c4e205" map="0010"/>
+            <part name="136094-ft2.37e" crc="30eb94bb" map="0100"/>
+            <part name="136094-ft3.37j" crc="a92e05e3" map="1000"/>
+        </interleave>
+        <!-- 0x080000 OKI 1 samples -->
+        <part name="136094-0082a.19e" crc="fde543c4"/>
+        <!-- 0x100000 OKI 2 samples -->
+        <part name="136094-0082a.19e" crc="fde543c4"/>
+        <!-- 0x180000 playfield: three thirds of 512 KB, a smaller one repeated (MAME: code %% elements) -->
+        <part name="136094-0036a.2d" crc="1b63b493"/>
+        <part name="136094-0037a.5d" crc="6d290056"/>
+        <part name="136094-0038a.8d" crc="38197c88"/>
+        <!-- 0x300000 alphanumerics -->
+        <part name="136094-0025a.13n" crc="6ab762ad"/>
+        <!-- 0x320000 JSA IIIs 6502 program -->
+        <part name="136094-0080a.12c" crc="0b1e565c"/>
+        <!-- 0x330000 RLE object ROM, ROM_LOAD16_BYTE pairs (the even file the high byte) -->
+        <interleave output="16">
+            <part name="136094-0041a.31n" crc="474770e9" map="01"/>
+            <part name="136094-0040a.31l" crc="cb777468" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136094-0043a.33n" crc="353d2dc3" map="01"/>
+            <part name="136094-0042a.33l" crc="17d49f77" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136094-0045a.35n" crc="13d89355" map="01"/>
+            <part name="136094-0044a.35l" crc="924c817e" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136094-0047a.37n" crc="43ee7453" map="01"/>
+            <part name="136094-0046a.37l" crc="980b9b92" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136094-0049a.31t" crc="25ac33af" map="01"/>
+            <part name="136094-0048a.31r" crc="d725a27d" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136094-0051a.33t" crc="a0fc90b2" map="01"/>
+            <part name="136094-0050a.33r" crc="dcc206cf" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136094-0053a.35t" crc="74320763" map="01"/>
+            <part name="136094-0052a.35r" crc="a7f9df2e" map="10"/>
+        </interleave>
+    </rom>
+
+    <nvram index="4" size="2048"/>
+
+    <buttons names="Fire,Throttle,AUX1 (Service Menu),AUX2 (Service Menu),AUX3 (Service Menu),-,Start,Coin" default="A,B,X,Y,R,L,Start,Select"/>
+</misterromdescription>

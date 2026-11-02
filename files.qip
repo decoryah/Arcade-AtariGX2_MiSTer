@@ -1,0 +1,59 @@
+set_global_assignment -name SYSTEMVERILOG_FILE AtariGX2.sv
+set_global_assignment -name SDC_FILE AtariGX2.sdc
+set_global_assignment -name QIP_FILE rtl/pll/pll.qip
+set_global_assignment -name SEARCH_PATH rtl
+
+# the machine
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gx2_main.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gx2_xga.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gx2_video.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gx2_jsa.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gx2_inputs.sv
+
+# from the Primal Rage core (MiSTer-devel/Arcade-PrimalRage_MiSTer, GPL-3; rtl/UPSTREAM.md)
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/rle_objects.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/tdp_ram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/rom_ddr_replay.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/nvram_hps.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/sdram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gx2_loader.sv
+
+# platform: CRT Adjust (rmonic79's line buffer, modules/crt_adjust)
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gx2_crtadj.sv
+set_global_assignment -name SYSTEMVERILOG_FILE modules/crt_adjust/crt_adjust.sv
+
+# 68EC020: TG68K.C (Tobias Gubener, LGPL-3), Verilog generated from the VHDL by GHDL (tools/gen_vhdl_cores.sh)
+set_global_assignment -name VERILOG_FILE modules/cpu-tg68k/gen/tg68k.v
+
+# JSA IIIs: T65 (6502, GHDL-generated as above), jt51 (YM2151), jt6295 (OKI6295)
+set_global_assignment -name VERILOG_FILE modules/cpu-t65/gen/t65.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_acc.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_csr_op.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_eg.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_exp2lin.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_exprom.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_kon.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_lfo.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_lin2exp.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_mmr.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_mod.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_noise.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_noise_lfsr.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_op.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_pg.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_phinc_rom.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_phrom.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_pm.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_reg.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_reg_ch.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_sh.v
+set_global_assignment -name VERILOG_FILE modules/jt51/hdl/jt51_timers.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295_acc.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295_adpcm.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295_ctrl.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295_rom.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295_serial.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295_sh_rst.v
+set_global_assignment -name VERILOG_FILE modules/jt6295/hdl/jt6295_timing.v

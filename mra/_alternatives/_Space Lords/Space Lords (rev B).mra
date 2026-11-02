@@ -1,0 +1,83 @@
+<misterromdescription>
+    <name>Space Lords (rev B)</name>
+    <setname>spclordsb</setname>
+    <mameversion>0289</mameversion>
+    <year>1992</year>
+    <manufacturer>Atari Games</manufacturer>
+    <players>2</players>
+    <joystick>8-way</joystick>
+    <rotation>horizontal</rotation>
+    <rbf>atarigx2</rbf>
+    <platform>Atari GX2</platform>
+
+    <!--
+      Image for the Atari GX2 core (rtl/gx2_loader.sv, tools/gx2_rom.py):
+        0x000000 68EC020 program   0x080000 OKI 1   0x100000 OKI 2   0x180000 playfield thirds (3 x 512 KB)
+        0x300000 alphanumerics     0x320000 6502    0x330000 RLE objects
+      Index 1: the board (0 Space Lords: modesc 0x400 + XGA 136095-0072; 1 Moto Frenzy: modesc 0x200 + 136094-0072).
+      No DIP switches: the board keeps its settings in the EEPROM (index 4); change them in the game's test menu
+      (OSD: Service Mode).
+      Made by tools/make_mra.py from MAME 0.289 (src/mame/atari/atarigx2.cpp); parts are found by name and CRC.
+    -->
+
+    <rom index="1">
+        <part>00</part>
+    </rom>
+
+    <rom index="0" zip="spclordsb.zip|spclords.zip" md5="b862b64b22574a554c43dc4877dc28ac" address="0x38000000">
+        <!-- 0x000000 maincpu: the 68EC020 program, ROM_LOAD32_BYTE -->
+        <interleave output="32">
+            <part name="136095.21b" crc="2ba99ce2" map="0001"/>
+            <part name="136095.22b" crc="631c5009" map="0010"/>
+            <part name="136095.23b" crc="bc64ab63" map="0100"/>
+            <part name="136095.24b" crc="7284a01a" map="1000"/>
+        </interleave>
+        <!-- 0x080000 OKI 1 samples -->
+        <part name="136095.81a" crc="212560dd"/>
+        <!-- 0x100000 OKI 2 samples -->
+        <part name="136095.81a" crc="212560dd"/>
+        <!-- 0x180000 playfield: three thirds of 512 KB, a smaller one repeated (MAME: code %% elements) -->
+        <part name="136095.30a" crc="27e0cfec"/>
+        <part name="136095.30a" crc="27e0cfec"/>
+        <part name="136095.30a" crc="27e0cfec"/>
+        <part name="136095.30a" crc="27e0cfec"/>
+        <part name="136095.31a" crc="5529cdc7"/>
+        <part name="136095.31a" crc="5529cdc7"/>
+        <part name="136095.31a" crc="5529cdc7"/>
+        <part name="136095.31a" crc="5529cdc7"/>
+        <part repeat="0x80000">00</part>
+        <!-- 0x300000 alphanumerics -->
+        <part name="136095.25a" crc="1669496e"/>
+        <!-- 0x320000 JSA IIIs 6502 program -->
+        <part name="136095.80a" crc="33bc0ede"/>
+        <!-- 0x330000 RLE object ROM, ROM_LOAD16_BYTE pairs (the even file the high byte) -->
+        <interleave output="16">
+            <part name="136095.41b" crc="02ce7e07" map="01"/>
+            <part name="136095.40b" crc="abb80720" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136095.43b" crc="26526345" map="01"/>
+            <part name="136095.42b" crc="c7a163df" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136095.45b" crc="53d01714" map="01"/>
+            <part name="136095.44b" crc="60a16e4d" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136095.47b" crc="41c873a3" map="01"/>
+            <part name="136095.46b" crc="e885aece" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136095.49b" crc="7af90faf" map="01"/>
+            <part name="136095.48b" crc="6c553406" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136095.51b" crc="97541074" map="01"/>
+            <part name="136095.50b" crc="a1c11ae8" map="10"/>
+        </interleave>
+    </rom>
+
+    <nvram index="4" size="2048"/>
+
+    <buttons names="Laser,Nuke,Throttle Fwd,Throttle Rev,Rear View,-,Start,Coin" default="A,B,X,Y,R,L,Start,Select"/>
+</misterromdescription>
